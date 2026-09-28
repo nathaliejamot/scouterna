@@ -1,60 +1,51 @@
-# Scouterna
+# Säve Scoutkår – webbplats
 
-Build a minimal static-site skeleton. I will add all real content later in a code editor, so keep it lean and easy to extend.
+Public website for the scout group (scoutkår) in Säve, north of Gothenburg: who we are, our age
+sections, the calendar, how to join, and how to get in touch. The content is in Swedish.
 
+Live at **https://nathaliejamot.github.io/scouterna/**
 
+The design borrows the look of [scouterna.se](https://www.scouterna.se) (navy, orange buttons,
+warm stone bands) so visitors recognise it as part of Scouterna, while the content is kept simple
+and local.
 
+## Editing content
 
-**Technical constraints (important):**
+All text on the site lives in typed files in [`src/data/`](src/data/). Components only read from
+these files, so you never need to touch a component to change what the site says.
 
-- Frontend-only. Do not enable Lovable Cloud, Supabase, auth, database, edge functions, or environment variables.
+| File          | What it holds                                                              |
+| ------------- | -------------------------------------------------------------------------- |
+| `site.ts`     | Kår name, tagline, e-mail, address, social links, logo file                |
+| `sections.ts` | Age sections (avdelningar): ages, description, meeting time, leaders       |
+| `events.ts`   | Calendar events (`date`/`endDate` as `yyyy-mm-dd`, optional section slug)  |
+| `contacts.ts` | Contact people on the Kontakt page                                         |
+| `pages.ts`    | Page copy and labels (hero, "Bli scout" steps, cost, registration link, …) |
+| `nav.ts`      | Menu items                                                                 |
 
-- Use `HashRouter` from react-router, not `BrowserRouter` (site will be hosted on GitHub Pages).
-
-- No external image URLs or CDNs; only local assets in `/public`.
-
-- Tailwind + shadcn/ui, mobile-first, semantic HTML, `lang="sv"` on the html element.
-
-
-
-
-**Structure:**
-
-- A shared layout with a header (site name placeholder, responsive nav) and a simple footer.
-
-- Six route pages, each just a heading and one placeholder paragraph: `/` Hem, `/avdelningar`, `/bli-scout`, `/kalender`, `/om-oss`, `/kontakt`.
-
-- A `src/data/` folder with typed placeholder files: `site.ts` (name, email, address, social links), `events.ts` (array of upcoming events), `sections.ts` (array of age groups), `contacts.ts` (array of leaders). Components should read from these files, not hardcode text.
-
-- A `src/components/` folder with `Layout`, `Header`, `Footer`, and a reusable `Card` component.
-
-
-
-
-**Design:** Neutral, clean starting theme with CSS variables in `index.css` for primary/secondary colors so I can restyle later. No custom illustrations, no hero images, no decorative filler.
-
-
-
-
-**Do not** add a contact form, analytics, SEO meta beyond a basic title, or any content beyond the placeholders described.
-
-This project was built with [Lovable](https://lovable.dev).
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/cc70dd07-37d2-4e79-a3ed-9954946f021a).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Placeholders start with `TODO:` — search for it to find what still needs real content. Past
+events disappear from the site automatically. Empty social links and an empty registration URL
+are hidden. Replace `public/logo.svg` (and `public/favicon.svg`) with the kår's own logo.
 
 ## Development
 
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
-
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
-npm run dev
+npm install
+npm run dev          # http://localhost:8080
+npm run lint
 ```
+
+## Deployment
+
+Every push to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which
+installs with Bun (from `bun.lock`), runs `npm run build:pages` and publishes `dist/client` to
+GitHub Pages. Routing is hash-based (`/scouterna/#/kalender`) so every page works on refresh.
+
+`npm run build:pages` is the static GitHub Pages build (base `/scouterna/`). Plain `npm run build`
+is Lovable's own build and is left untouched on purpose.
+
+## Lovable
+
+This project is connected to [Lovable](https://lovable.dev), which syncs the `main` branch both
+ways: edits made in Lovable are committed here, and pushes to `main` show up in Lovable. Avoid
+force-pushing or rewriting pushed history, and keep `main` in a working state.

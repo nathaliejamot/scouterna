@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Page } from "./index";
+import { Page } from "@/components/Page";
 
 export const Route = createFileRoute("/bli-scout")({
   head: () => ({ meta: [{ title: "Bli scout" }] }),

@@ -10,33 +10,91 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AvdelningarRouteImport } from './routes/avdelningar'
+import { Route as BliScoutRouteImport } from './routes/bli-scout'
+import { Route as KalenderRouteImport } from './routes/kalender'
+import { Route as KontaktRouteImport } from './routes/kontakt'
+import { Route as OmOssRouteImport } from './routes/om-oss'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AvdelningarRoute = AvdelningarRouteImport.update({
+  id: '/avdelningar',
+  path: '/avdelningar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BliScoutRoute = BliScoutRouteImport.update({
+  id: '/bli-scout',
+  path: '/bli-scout',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KalenderRoute = KalenderRouteImport.update({
+  id: '/kalender',
+  path: '/kalender',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KontaktRoute = KontaktRouteImport.update({
+  id: '/kontakt',
+  path: '/kontakt',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OmOssRoute = OmOssRouteImport.update({
+  id: '/om-oss',
+  path: '/om-oss',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/avdelningar': typeof AvdelningarRoute
+  '/bli-scout': typeof BliScoutRoute
+  '/kalender': typeof KalenderRoute
+  '/kontakt': typeof KontaktRoute
+  '/om-oss': typeof OmOssRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/avdelningar': typeof AvdelningarRoute
+  '/bli-scout': typeof BliScoutRoute
+  '/kalender': typeof KalenderRoute
+  '/kontakt': typeof KontaktRoute
+  '/om-oss': typeof OmOssRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/avdelningar': typeof AvdelningarRoute
+  '/bli-scout': typeof BliScoutRoute
+  '/kalender': typeof KalenderRoute
+  '/kontakt': typeof KontaktRoute
+  '/om-oss': typeof OmOssRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    '/' | '/avdelningar' | '/bli-scout' | '/kalender' | '/kontakt' | '/om-oss'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/avdelningar' | '/bli-scout' | '/kalender' | '/kontakt' | '/om-oss'
+  id:
+    | '__root__'
+    | '/'
+    | '/avdelningar'
+    | '/bli-scout'
+    | '/kalender'
+    | '/kontakt'
+    | '/om-oss'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AvdelningarRoute: typeof AvdelningarRoute
+  BliScoutRoute: typeof BliScoutRoute
+  KalenderRoute: typeof KalenderRoute
+  KontaktRoute: typeof KontaktRoute
+  OmOssRoute: typeof OmOssRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +106,51 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/avdelningar': {
+      id: '/avdelningar'
+      path: '/avdelningar'
+      fullPath: '/avdelningar'
+      preLoaderRoute: typeof AvdelningarRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/bli-scout': {
+      id: '/bli-scout'
+      path: '/bli-scout'
+      fullPath: '/bli-scout'
+      preLoaderRoute: typeof BliScoutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kalender': {
+      id: '/kalender'
+      path: '/kalender'
+      fullPath: '/kalender'
+      preLoaderRoute: typeof KalenderRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kontakt': {
+      id: '/kontakt'
+      path: '/kontakt'
+      fullPath: '/kontakt'
+      preLoaderRoute: typeof KontaktRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/om-oss': {
+      id: '/om-oss'
+      path: '/om-oss'
+      fullPath: '/om-oss'
+      preLoaderRoute: typeof OmOssRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AvdelningarRoute: AvdelningarRoute,
+  BliScoutRoute: BliScoutRoute,
+  KalenderRoute: KalenderRoute,
+  KontaktRoute: KontaktRoute,
+  OmOssRoute: OmOssRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

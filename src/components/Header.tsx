@@ -1,61 +1,69 @@
 import { Link } from "@tanstack/react-router";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { navLinks } from "@/data/nav";
+import { layout } from "@/data/pages";
 import { site } from "@/data/site";
-import { navLinks } from "@/lib/nav";
 
 export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="border-b border-border bg-background">
-      <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
-        <Link
-          to="/"
-          className="text-lg font-semibold tracking-tight text-foreground"
-        >
-          {site.name}
-        </Link>
+    <header>
+      <div className="bg-background">
+        <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
+          <Link
+            to="/"
+            className="font-heading text-xl font-bold tracking-tight text-primary sm:text-2xl"
+          >
+            {site.name}
+          </Link>
 
-        {/* Desktop nav */}
-        <nav aria-label="Huvudmeny" className="hidden md:block">
-          <ul className="flex items-center gap-6">
-            {navLinks.map((link) => (
-              <li key={link.to}>
-                <Link
-                  to={link.to}
-                  activeProps={{ className: "text-foreground font-medium" }}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
-                >
-                  {link.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </nav>
-
-        {/* Mobile toggle */}
-        <button
-          type="button"
-          className="md:hidden rounded-md border border-border px-3 py-1.5 text-sm text-foreground"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          onClick={() => setOpen((v) => !v)}
-        >
-          Meny
-        </button>
+          <button
+            type="button"
+            className="inline-flex items-center gap-2 rounded-md px-3 py-2 font-heading text-sm font-semibold text-primary md:hidden"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            onClick={() => setOpen((v) => !v)}
+          >
+            {open ? <X className="size-5" aria-hidden /> : <Menu className="size-5" aria-hidden />}
+            {layout.menuButton}
+          </button>
+        </div>
       </div>
+
+      {/* Desktop nav */}
+      <nav aria-label={layout.mainNavLabel} className="hidden bg-primary md:block">
+        <ul className="mx-auto flex max-w-5xl px-4">
+          {navLinks.map((link) => (
+            <li key={link.to}>
+              <Link
+                to={link.to}
+                activeOptions={{ exact: link.to === "/" }}
+                activeProps={{ className: "border-cta" }}
+                inactiveProps={{ className: "border-transparent" }}
+                className="block border-b-4 px-4 pt-4 pb-3 font-heading text-[0.95rem] font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10"
+              >
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
 
       {/* Mobile nav */}
       {open && (
-        <nav id="mobile-nav" aria-label="Huvudmeny" className="md:hidden">
-          <ul className="mx-auto flex max-w-5xl flex-col gap-1 border-t border-border px-4 py-3">
+        <nav id="mobile-nav" aria-label={layout.mainNavLabel} className="bg-primary md:hidden">
+          <ul className="flex flex-col px-4 py-2">
             {navLinks.map((link) => (
               <li key={link.to}>
                 <Link
                   to={link.to}
                   onClick={() => setOpen(false)}
-                  activeProps={{ className: "text-foreground font-medium" }}
-                  className="block rounded-md px-2 py-2 text-sm text-muted-foreground hover:text-foreground"
+                  activeOptions={{ exact: link.to === "/" }}
+                  activeProps={{ className: "border-cta font-semibold" }}
+                  inactiveProps={{ className: "border-transparent" }}
+                  className="block border-l-4 px-3 py-3 font-heading text-primary-foreground"
                 >
                   {link.label}
                 </Link>

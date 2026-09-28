@@ -1,20 +1,21 @@
 import type { ReactNode } from "react";
+import { cn } from "@/lib/utils";
 
 interface CardProps {
   title?: string;
+  /** Heading level for the title; use "h3" when the cards sit under an h2. */
+  titleAs?: "h2" | "h3";
   children: ReactNode;
   className?: string;
 }
 
-export function Card({ title, children, className = "" }: CardProps) {
+export function Card({ title, titleAs: Title = "h2", children, className }: CardProps) {
   return (
-    <div
-      className={`rounded-lg border border-border bg-card p-6 ${className}`}
-    >
+    <div className={cn("rounded-xl border border-border bg-card p-6", className)}>
       {title && (
-        <h2 className="text-lg font-semibold text-card-foreground">{title}</h2>
+        <Title className="font-heading text-xl font-semibold text-card-foreground">{title}</Title>
       )}
-      <div className={title ? "mt-2" : ""}>{children}</div>
+      <div className={title ? "mt-2" : undefined}>{children}</div>
     </div>
   );
 }

@@ -1,33 +1,52 @@
-export interface Section {
-  id: string;
+export type Section = {
+  slug: string;
   name: string;
-  ageRange: string;
+  ages: string;
   description: string;
-}
+  meetingTime: string;
+  leaders: string[];
+};
 
+// Scouterna's standard age groups. TODO: keep only the sections the kår runs.
 export const sections: Section[] = [
   {
-    id: "spara",
-    name: "Spararna",
-    ageRange: "8–10 år",
-    description: "Kort beskrivning av avdelningen.",
+    slug: "sparare",
+    name: "Spårare",
+    ages: "åk 2–3",
+    description: "TODO: Kort beskrivning av vad Spårarna gör.",
+    meetingTime: "TODO: Veckodag och tid",
+    leaders: ["TODO: Ledarens namn"],
   },
   {
-    id: "upptacka",
-    name: "Upptäckarna",
-    ageRange: "10–12 år",
-    description: "Kort beskrivning av avdelningen.",
+    slug: "upptackare",
+    name: "Upptäckare",
+    ages: "åk 4–5",
+    description: "TODO: Kort beskrivning av vad Upptäckarna gör.",
+    meetingTime: "TODO: Veckodag och tid",
+    leaders: ["TODO: Ledarens namn"],
   },
   {
-    id: "aventyra",
-    name: "Äventyrarna",
-    ageRange: "12–15 år",
-    description: "Kort beskrivning av avdelningen.",
+    slug: "aventyrare",
+    name: "Äventyrare",
+    ages: "åk 6–8",
+    description: "TODO: Kort beskrivning av vad Äventyrarna gör.",
+    meetingTime: "TODO: Veckodag och tid",
+    leaders: ["TODO: Ledarens namn"],
   },
   {
-    id: "utmana",
-    name: "Utmanarna",
-    ageRange: "15–18 år",
-    description: "Kort beskrivning av avdelningen.",
+    slug: "utmanare",
+    name: "Utmanare",
+    ages: "åk 9 – gymnasiet år 2",
+    description: "TODO: Kort beskrivning av vad Utmanarna gör.",
+    meetingTime: "TODO: Veckodag och tid",
+    leaders: ["TODO: Ledarens namn"],
+  },
+  {
+    slug: "rover",
+    name: "Rover",
+    ages: "gymnasiet år 3 – 25 år",
+    description: "TODO: Kort beskrivning av vad Rovrarna gör.",
+    meetingTime: "TODO: Veckodag och tid",
+    leaders: ["TODO: Ledarens namn"],
   },
 ];

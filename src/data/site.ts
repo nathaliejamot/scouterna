@@ -1,21 +1,31 @@
-export interface SocialLink {
-  label: string;
-  url: string;
-}
+export type Address = {
+  street: string;
+  postalCode: string;
+  city: string;
+};
 
-export interface SiteInfo {
+export type SiteInfo = {
   name: string;
+  tagline: string;
   email: string;
-  address: string;
-  social: SocialLink[];
-}
+  address: Address;
+  /** Full profile URLs. Leave empty to hide the link. */
+  social: { facebook: string; instagram: string };
+  parentOrg: { name: string; url: string };
+};
 
 export const site: SiteInfo = {
-  name: "Scoutkåren",
-  email: "info@example.se",
-  address: "Gatuadress 123, 123 45 Ort",
-  social: [
-    { label: "Facebook", url: "https://facebook.com/" },
-    { label: "Instagram", url: "https://instagram.com/" },
-  ],
+  name: "Säve Scoutkår", // TODO: bekräfta kårens riktiga namn
+  tagline: "TODO: Kort mening om vad kåren står för",
+  email: "todo@example.com",
+  address: {
+    street: "TODO: Gatuadress",
+    postalCode: "TODO: Postnummer",
+    city: "Säve",
+  },
+  social: {
+    facebook: "", // TODO: länk till Facebook-sidan
+    instagram: "", // TODO: länk till Instagram-kontot
+  },
+  parentOrg: { name: "Scouterna", url: "https://www.scouterna.se" },
 };

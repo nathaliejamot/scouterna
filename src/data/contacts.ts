@@ -1,21 +1,25 @@
-export interface Contact {
-  id: string;
-  name: string;
+export type Contact = {
   role: string;
-  email: string;
-}
+  name: string;
+  email?: string;
+  phone?: string;
+};
 
 export const contacts: Contact[] = [
   {
-    id: "leader-1",
-    name: "Förnamn Efternamn",
-    role: "Kårchef",
-    email: "karchef@example.se",
+    role: "TODO: Kårordförande",
+    name: "TODO: Namn",
+    email: "todo@example.com",
   },
   {
-    id: "leader-2",
-    name: "Förnamn Efternamn",
-    role: "Avdelningsledare",
-    email: "ledare@example.se",
+    role: "TODO: Medlemsansvarig",
+    name: "TODO: Namn",
+    email: "todo@example.com",
+  },
+  {
+    role: "TODO: Kontakt för nya scouter",
+    name: "TODO: Namn",
+    email: "todo@example.com",
+    phone: "TODO: Telefonnummer",
   },
 ];

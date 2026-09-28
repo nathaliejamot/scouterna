@@ -12,6 +12,7 @@
 ## Architecture decisions
 
 - Hash-based routing (`createHashHistory` in `src/router.tsx`) — the site is hosted on GitHub Pages, where path-based routes 404 on refresh.
+- GitHub Pages build is `npm run build:pages` (sets `GITHUB_PAGES=true`): `vite.config.ts` then uses base `/scouterna/`, disables nitro and prerenders a static SPA shell to `dist/client`; `src/router.tsx` maps that base on the server so shell links match hash URLs. Without the flag, `npm run build` stays Lovable's default Cloudflare SSR build — don't make the Pages settings unconditional or Lovable's preview/publish breaks. Deployed by `.github/workflows/deploy.yml` (Bun, since `bun.lock` is the lockfile).
 - All visible text lives in typed files under `src/data/` (`site.ts`, `events.ts`, `sections.ts`, `contacts.ts`) — components read from data, never hardcode content, so real content can be added in one place.
 - Shared page shell: `src/components/Layout.tsx` (Header + Footer) is rendered once in `src/routes/__root.tsx` around `<Outlet />`; page bodies use the shared `Page` heading wrapper from `src/components/Page.tsx`.
 - Frontend-only: no Lovable Cloud, database, auth, env vars, or external image URLs — assets go in `/public`.

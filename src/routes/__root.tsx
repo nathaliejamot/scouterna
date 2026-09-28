@@ -88,14 +88,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: appCss,
       },
       { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.svg`, type: "image/svg+xml" },
-      // Libre Franklin (headings) and EB Garamond (body), close to scouterna.se's type.
-      // Fallback stacks live in styles.css.
-      { rel: "preconnect", href: "https://fonts.googleapis.com" },
-      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      {
-        rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500&family=Libre+Franklin:wght@500;600;700&display=swap",
-      },
     ],
   }),
   shellComponent: RootShell,

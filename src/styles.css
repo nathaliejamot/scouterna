@@ -4,6 +4,23 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/* Self-hosted variable fonts (latin subset, SIL OFL) in public/fonts/. */
+@font-face {
+  font-family: "EB Garamond";
+  font-style: normal;
+  font-weight: 400 800;
+  font-display: swap;
+  src: url("/fonts/eb-garamond-latin.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Libre Franklin";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("/fonts/libre-franklin-latin.woff2") format("woff2");
+}
+
 /*
  * Design system definition.
  *

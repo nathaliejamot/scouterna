@@ -20,7 +20,7 @@ export function EventList({ events }: { events: Event[] }) {
                 {event.title}
               </h3>
               {(sectionName || event.location) && (
-                <p className="text-sm text-muted-foreground">
+                <p className="font-heading text-sm text-muted-foreground">
                   {[sectionName, event.location].filter(Boolean).join(" · ")}
                 </p>
               )}

@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Logotyp">
+  <!-- Placeholder logo: replace with the kår's own. -->
+  <circle cx="32" cy="32" r="32" fill="#003660"/>
+  <circle cx="45" cy="18" r="6" fill="#F26B1D"/>
+  <path d="M32 11 21 26h6l-9 12h7l-10 13h34L39 38h7l-9-12h6z" fill="#fff"/>
+  <rect x="29" y="51" width="6" height="6" rx="1" fill="#fff"/>
+</svg>

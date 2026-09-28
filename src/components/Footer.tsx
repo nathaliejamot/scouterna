@@ -10,7 +10,7 @@ export function Footer() {
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="mx-auto grid max-w-5xl gap-6 px-4 py-10 text-sm sm:grid-cols-3">
+      <div className="mx-auto grid max-w-5xl gap-6 px-4 py-10 sm:grid-cols-3">
         <div>
           <p className="font-heading text-lg font-bold">{site.name}</p>
           <p className="mt-2 text-primary-foreground/80">{formatAddress(site.address)}</p>

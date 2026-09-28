@@ -37,6 +37,7 @@
   --color-primary-foreground: var(--primary-foreground);
   --color-cta: var(--cta);
   --color-cta-foreground: var(--cta-foreground);
+  --color-highlight: var(--highlight);
   --color-secondary: var(--secondary);
   --color-secondary-foreground: var(--secondary-foreground);
   --color-muted: var(--muted);
@@ -65,29 +66,33 @@
 }
 
 :root {
+  /* Inspired by scouterna.se: navy, orange calls to action, warm stone bands. */
   --radius: 0.625rem;
+  --font-heading-family:
+    "Libre Franklin", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  --font-body-family: "EB Garamond", ui-serif, Georgia, Cambria, "Times New Roman", serif;
   --background: oklch(1 0 0);
-  --foreground: oklch(0.129 0.042 264.695);
+  --foreground: oklch(0.293 0.004 264.5); /* #2B2C2E */
   --card: oklch(1 0 0);
-  --card-foreground: oklch(0.129 0.042 264.695);
+  --card-foreground: oklch(0.293 0.004 264.5);
   --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.129 0.042 264.695);
-  --primary: oklch(0.208 0.042 265.755);
-  --primary-foreground: oklch(0.984 0.003 247.858);
-  --cta: oklch(0.56 0.18 40);
+  --popover-foreground: oklch(0.293 0.004 264.5);
+  --primary: oklch(0.326 0.09 249.1); /* navy #003660 */
+  --primary-foreground: oklch(1 0 0);
+  --cta: oklch(0.585 0.185 39.7); /* orange #D14700, AA with white text */
   --cta-foreground: oklch(1 0 0);
-  --font-heading-family: ui-sans-serif, system-ui, sans-serif;
-  --secondary: oklch(0.968 0.007 247.896);
-  --secondary-foreground: oklch(0.208 0.042 265.755);
-  --muted: oklch(0.968 0.007 247.896);
-  --muted-foreground: oklch(0.554 0.046 257.417);
-  --accent: oklch(0.968 0.007 247.896);
-  --accent-foreground: oklch(0.208 0.042 265.755);
+  --highlight: oklch(0.684 0.185 44.9); /* lighter orange #F26B1D for markers on navy */
+  --secondary: oklch(0.922 0.012 106.6); /* stone #E6E6DD */
+  --secondary-foreground: oklch(0.326 0.09 249.1);
+  --muted: oklch(0.922 0.012 106.6);
+  --muted-foreground: oklch(0.456 0.005 258.3); /* #55575A, AA on white and stone */
+  --accent: oklch(0.946 0.009 242.8); /* light navy tint #E8EEF3 */
+  --accent-foreground: oklch(0.326 0.09 249.1);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.929 0.013 255.508);
-  --input: oklch(0.929 0.013 255.508);
-  --ring: oklch(0.704 0.04 256.788);
+  --border: oklch(0.874 0.011 106.6); /* #D6D6CE */
+  --input: oklch(0.874 0.011 106.6);
+  --ring: oklch(0.456 0.074 244.3); /* #305B7D */
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -146,5 +151,13 @@
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
+    font-family: var(--font-body-family);
+    font-size: 1.125rem;
+    line-height: 1.6;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 2px;
   }
 }

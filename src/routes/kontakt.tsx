@@ -30,7 +30,7 @@ function KontaktPage() {
               <p className="font-heading text-sm font-semibold text-muted-foreground">
                 {contact.role}
               </p>
-              <div className="mt-3 space-y-1 text-sm">
+              <div className="mt-3 space-y-1">
                 {contact.email && (
                   <p>
                     <a href={`mailto:${contact.email}`} className={linkClass}>

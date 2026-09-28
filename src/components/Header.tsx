@@ -14,8 +14,13 @@ export function Header() {
         <div className="mx-auto flex max-w-5xl items-center justify-between px-4 py-4">
           <Link
             to="/"
-            className="font-heading text-xl font-bold tracking-tight text-primary sm:text-2xl"
+            className="flex items-center gap-3 font-heading text-xl font-bold tracking-tight text-primary sm:text-2xl"
           >
+            <img
+              src={`${import.meta.env.BASE_URL}${site.logo}`}
+              alt=""
+              className="size-10 sm:size-12"
+            />
             {site.name}
           </Link>
 
@@ -40,7 +45,7 @@ export function Header() {
               <Link
                 to={link.to}
                 activeOptions={{ exact: link.to === "/" }}
-                activeProps={{ className: "border-cta" }}
+                activeProps={{ className: "border-highlight" }}
                 inactiveProps={{ className: "border-transparent" }}
                 className="block border-b-4 px-4 pt-4 pb-3 font-heading text-[0.95rem] font-medium text-primary-foreground transition-colors hover:bg-primary-foreground/10"
               >
@@ -53,7 +58,11 @@ export function Header() {
 
       {/* Mobile nav */}
       {open && (
-        <nav id="mobile-nav" aria-label={layout.mainNavLabel} className="bg-primary md:hidden">
+        <nav
+          id="mobile-nav"
+          aria-label={layout.mainNavLabel}
+          className="border-b border-primary-foreground/20 bg-primary md:hidden"
+        >
           <ul className="flex flex-col px-4 py-2">
             {navLinks.map((link) => (
               <li key={link.to}>
@@ -61,7 +70,7 @@ export function Header() {
                   to={link.to}
                   onClick={() => setOpen(false)}
                   activeOptions={{ exact: link.to === "/" }}
-                  activeProps={{ className: "border-cta font-semibold" }}
+                  activeProps={{ className: "border-highlight font-semibold" }}
                   inactiveProps={{ className: "border-transparent" }}
                   className="block border-l-4 px-3 py-3 font-heading text-primary-foreground"
                 >

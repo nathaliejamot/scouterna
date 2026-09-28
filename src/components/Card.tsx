@@ -12,9 +12,7 @@ interface CardProps {
 export function Card({ title, titleAs: Title = "h2", children, className }: CardProps) {
   return (
     <div className={cn("rounded-xl border border-border bg-card p-6", className)}>
-      {title && (
-        <Title className="font-heading text-xl font-semibold text-card-foreground">{title}</Title>
-      )}
+      {title && <Title className="font-heading text-xl font-semibold text-primary">{title}</Title>}
       <div className={title ? "mt-2" : undefined}>{children}</div>
     </div>
   );

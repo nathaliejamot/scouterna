@@ -6,6 +6,8 @@ export type Address = {
 
 export type SiteInfo = {
   name: string;
+  /** File in /public */
+  logo: string;
   tagline: string;
   email: string;
   address: Address;
@@ -16,6 +18,7 @@ export type SiteInfo = {
 
 export const site: SiteInfo = {
   name: "Säve Scoutkår", // TODO: bekräfta kårens riktiga namn
+  logo: "logo.svg", // TODO: byt ut platshållaren i /public mot kårens logotyp
   tagline: "TODO: Kort mening om vad kåren står för",
   email: "todo@example.com",
   address: {

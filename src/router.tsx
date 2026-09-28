@@ -1,5 +1,9 @@
 import { QueryClient } from "@tanstack/react-query";
-import { createHashHistory, createRouter } from "@tanstack/react-router";
+import {
+  createHashHistory,
+  createMemoryHistory,
+  createRouter,
+} from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 
 export const getRouter = () => {
@@ -8,7 +12,13 @@ export const getRouter = () => {
   const router = createRouter({
     routeTree,
     context: { queryClient },
-    history: createHashHistory(),
+    // Hash history in the browser so the site works on GitHub Pages
+    // (path-based URLs would 404 there). The server cannot create a
+    // history bound to `window`, so SSR uses memory history.
+    history:
+      typeof document === "undefined"
+        ? createMemoryHistory({ initialEntries: ["/"] })
+        : createHashHistory(),
     defaultPreloadStaleTime: 0,
   });
 
